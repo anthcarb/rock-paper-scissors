@@ -11,3 +11,7 @@
 //Add 1 to the total round tally.
 //Repeat until 5 rounds have been played.
 
+const guess = [ 'rock', 'paper', 'scissors'];
+let randomGuess = Math.floor(Math.random() * guess.length);
+let compGuess = guess[randomGuess];
+console.log(compGuess);
