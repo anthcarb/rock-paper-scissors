@@ -17,6 +17,24 @@ let round = 1;
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
 }
+
+function userPlay(){
+    let userSelect = prompt('Choose rock, paper, or scissors!', 'rock, paper, scissors').toLowerCase();
+    if (select.includes(userSelect)) {
+        return userSelect;
+    } else {
+        alert('Please select rock, paper, or scissors');
+        userPlay();
+    }
+
+}
+
+function playRound(userSelect, compSelect){
+
+}
+
+let userSelect = userPlay();
 let compSelect = computerPlay();
 
 console.log(compSelect);
+console.log(userSelect);
