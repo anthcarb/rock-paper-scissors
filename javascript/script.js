@@ -12,6 +12,11 @@
 //Repeat until 5 rounds have been played.
 
 const guess = [ 'rock', 'paper', 'scissors'];
-let randomGuess = Math.floor(Math.random() * guess.length);
-let compGuess = guess[randomGuess];
+let round = 1;
+
+function computerPlay(){
+    return guess[Math.floor(Math.random() * guess.length)];
+}
+
+let compGuess = computerPlay();
 console.log(compGuess);
