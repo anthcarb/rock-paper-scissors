@@ -13,6 +13,8 @@
 
 const select = [ 'rock', 'paper', 'scissors'];
 let round = 1;
+let userWins = 0;
+let compWins = 0;
 
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
@@ -26,15 +28,25 @@ function userPlay(){
         alert('Please select rock, paper, or scissors');
         userPlay();
     }
-
 }
 
 function playRound(userSelect, compSelect){
-
+    if (userSelect === compSelect){
+        playRound(userSelect, compSelect);
+    } else if (userSelect === 'rock' && compSelect === 'scissors') {
+        ++userWins;
+    } else if (userSelect === 'scissors' && compSelect === 'paper') {
+        ++userWins;
+     } else if (userSelect === 'paper' && compSelect === 'rock') {
+         ++userWins;
+     } else {
+         ++compWins;
+     }
 }
 
 let userSelect = userPlay();
 let compSelect = computerPlay();
+playRound(userSelect,compSelect);
 
 console.log(compSelect);
 console.log(userSelect);
