@@ -1,52 +1,98 @@
 //Create constant selects with list rock, paper, scissors
 //Check to see if rounds is less than 5 or if the game is over
-//Create variable compSelect that equals randomly chosen item from selects
+//Create variable computerSelection that equals randomly chosen item from selects
 //Prompt user to choose one of rock, paper, scissors and store in usersSelect
-//Change userSelect to lower case.
-//Check if userSelect equals rock, paper, or scissors otherwise don't allow to continue
-//Compare userSelect and compselect
+//Change playerSelection to lower case.
+//Check if playerSelection equals rock, paper, or scissors otherwise don't allow to continue
+//Compare playerSelection and compselect
 //Rock beats scissors, scissors beat paper, paper beats rock. 
-//Ties prompt user to choose new userSelect, and compSelect choses new random value.
+//Ties prompt user to choose new playerSelection, and computerSelection choses new random value.
 //Declare a winner. Add 1 to the compWins or userWins depending on who wins.
 //Add 1 to the total round tally.
 //Repeat until 5 rounds have been played.
 
 const select = [ 'rock', 'paper', 'scissors'];
-let round = 1;
+let round = 0;
 let userWins = 0;
 let compWins = 0;
+
+
+const computerSelection = computerPlay();
+const playerSelection = userPlay();
+// const tie = tieCheck(playerSelection, computerSelection)
 
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
 }
+// Randomly selects rock, paper, scissors for computerPlay
 
 function userPlay(){
-    let userSelect = prompt('Choose rock, paper, or scissors!', 'rock, paper, scissors').toLowerCase();
-    if (select.includes(userSelect)) {
-        return userSelect;
+    let userInput = prompt('Choose rock, paper, or scissors!', 'rock, paper, scissors').toLowerCase();
+    if (select.includes(userInput)) {
+        return userInput;
     } else {
-        alert('Please select rock, paper, or scissors');
+        alert('Please select rock, paper, or scissors!');
         userPlay();
     }
 }
+// Prompts userInput of rock, paper, or scissors. converts input to lower case and checks to see if it's contained in select array.
+// If userInput is not rock paper or scissors, then it informs the user and forces the prompt again until an input that matches one of the selections.
 
-function playRound(userSelect, compSelect){
-    if (userSelect === compSelect){
-        playRound(userSelect, compSelect);
-    } else if (userSelect === 'rock' && compSelect === 'scissors') {
+
+
+// function tieCheck(playerSelection, computerSelection) {
+//     if (playerSelection === computerSelection) {
+//         alert(`TIE! You have both selected ${computerSelection}. Go again!`);    
+//         return true;
+//     } else {
+//         return false;
+//     }
+// }
+
+// function resetRound(){
+//     userPlay();
+//     computerPlay();
+// }
+
+
+// while (tieCheck(playerSelection, computerSelection) === true) {
+//     userPlay();
+//     computerPlay();
+//     tieCheck(playerSelection, computerSelection);
+// } 
+
+// playRound(playerSelection, computerSelection);
+
+// tie = tieCheck(playerSelection, computerSelection);
+// tie ? resetRound() : playRound(playerSelection, computerSelection);
+
+
+
+function playRound(playerSelection, computerSelection){
+
+    if (playerSelection === computerSelection) {
+        return(`Tie! You both selected ${playerSelection}.`)
+    }
+    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         ++userWins;
-    } else if (userSelect === 'scissors' && compSelect === 'paper') {
+        return(`You win. ${playerSelection} beats ${computerSelection}.`);
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
         ++userWins;
-     } else if (userSelect === 'paper' && compSelect === 'rock') {
+        return(`You win. ${playerSelection} beats ${computerSelection}.`);
+     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
          ++userWins;
+         return(`You win. ${playerSelection} beats ${computerSelection}.`);
      } else {
          ++compWins;
+         return(`You lose. ${computerSelection} beats ${playerSelection}.`);
      }
+
 }
 
-let userSelect = userPlay();
-let compSelect = computerPlay();
-playRound(userSelect,compSelect);
 
-console.log(compSelect);
-console.log(userSelect);
+
+
+
+console.log('Comp selects ' + computerSelection + '.');
+console.log('User selects ' + playerSelection + '.');
+console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection))
