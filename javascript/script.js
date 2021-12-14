@@ -17,9 +17,7 @@ let userWins = 0;
 let compWins = 0;
 
 
-const computerSelection = computerPlay();
-const playerSelection = userPlay();
-// const tie = tieCheck(playerSelection, computerSelection)
+
 
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
@@ -37,7 +35,7 @@ function userPlay(){
 }
 // Prompts userInput of rock, paper, or scissors. converts input to lower case and checks to see if it's contained in select array.
 // If userInput is not rock paper or scissors, then it informs the user and forces the prompt again until an input that matches one of the selections.
-
+// Need to fix this somehow. the return of userPlay()
 
 
 // function tieCheck(playerSelection, computerSelection) {
@@ -70,6 +68,9 @@ function userPlay(){
 
 function playRound(playerSelection, computerSelection){
 
+    console.log('Comp selects ' + computerSelection + '.');
+    console.log('User selects ' + playerSelection + '.');
+
     if (playerSelection === computerSelection) {
         return(`Tie! You both selected ${playerSelection}.`)
     }
@@ -89,10 +90,35 @@ function playRound(playerSelection, computerSelection){
 
 }
 
+function game() {
+    for (let i = 0; i < 5; i++ ) {
+        const computerSelection = computerPlay();
+        const playerSelection = userPlay();
+        // playRound(playerSelection, computerSelection);
+        let results = playRound(playerSelection, computerSelection);
+
+        ++round;
+
+        // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
+        console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
+
+        if (round === 5) {
+            if (userWins > compWins) {
+                alert(`Player wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`  );
+                // resetGame();
+            } else if (compWins > userWins) {
+                alert(`Computer wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
+                // resetGame();
+            } else if (userWins === compWins) {
+                alert(`Tie game after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
+                // resetGame();
+            }
+        }
+    }
+}
+
+game();
 
 
 
-
-console.log('Comp selects ' + computerSelection + '.');
-console.log('User selects ' + playerSelection + '.');
-console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection))
+// console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection))
