@@ -30,7 +30,7 @@ function userPlay(){
         return userInput;
     } else {
         alert('Please select rock, paper, or scissors!');
-        userPlay();
+        // userPlay();
     }
 }
 // Prompts userInput of rock, paper, or scissors. converts input to lower case and checks to see if it's contained in select array.
@@ -93,11 +93,19 @@ function playRound(playerSelection, computerSelection){
 function game() {
     for (let i = 0; i < 5; i++ ) {
         const computerSelection = computerPlay();
-        const playerSelection = userPlay();
+        let playerSelection
         // playRound(playerSelection, computerSelection);
+        
+        ++round;
+        
+        alert(`Round ${round}!`)
+        while (playerSelection == undefined) {
+            playerSelection = userPlay();
+        }
+
         let results = playRound(playerSelection, computerSelection);
 
-        ++round;
+       
 
         // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
         console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
