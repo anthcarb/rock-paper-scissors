@@ -33,6 +33,81 @@ function userPlay(){
         // userPlay();
     }
 }
+//Asks user input for rock, paper, or scissors.
+
+function playRound(playerSelection, computerSelection){
+
+    console.log('Computer selects ' + computerSelection + '.');
+    console.log('Player selects ' + playerSelection + '.');
+
+    if (playerSelection === computerSelection) {
+        return(`Tie! You both selected ${playerSelection}.`)
+    }
+    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
+        ++userWins;
+        return(`You win. ${playerSelection} beats ${computerSelection}.`);
+    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
+        ++userWins;
+        return(`You win. ${playerSelection} beats ${computerSelection}.`);
+     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
+         ++userWins;
+         return(`You win. ${playerSelection} beats ${computerSelection}.`);
+     } else {
+         ++compWins;
+         return(`You lose. ${computerSelection} beats ${playerSelection}.`);
+     }
+
+}
+//rock paper scissor logic. checks tie, before checking user win conditions, if user doesn't win, then computer wins.
+
+function game() {
+    for (let i = 0; i < 5; i++ ) {
+        //loop for 5 rounds.
+
+        const computerSelection = computerPlay();
+        let playerSelection
+        // playRound(playerSelection, computerSelection);
+        
+        ++round;
+
+        alert(`Round ${round}!`)
+        //Tells what round is about to be played
+
+        while (playerSelection == undefined) {
+            playerSelection = userPlay();
+        }
+        //checks if player selection had a valid rock, paper, scissors, prompt, otherwise asks for user input until a valid choice.
+
+        let results = playRound(playerSelection, computerSelection);
+        //playround returns the results of the game. who won and who beat who.
+       
+
+        // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
+        console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
+
+        if (round === 5) {
+            if (userWins > compWins) {
+                alert(`Player wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`  );
+                // resetGame();
+            } else if (compWins > userWins) {
+                alert(`Computer wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
+                // resetGame();
+            } else if (userWins === compWins) {
+                alert(`Tie game after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
+                // resetGame();
+            }
+        }
+    }
+}
+
+game();
+
+
+
+// console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection))
+
+
+//THE FOLLOWING IS COMMENTS/CODE NOT USED.
 // Prompts userInput of rock, paper, or scissors. converts input to lower case and checks to see if it's contained in select array.
 // If userInput is not rock paper or scissors, then it informs the user and forces the prompt again until an input that matches one of the selections.
 // Need to fix this somehow. the return of userPlay()
@@ -65,68 +140,3 @@ function userPlay(){
 // tie ? resetRound() : playRound(playerSelection, computerSelection);
 
 
-
-function playRound(playerSelection, computerSelection){
-
-    console.log('Comp selects ' + computerSelection + '.');
-    console.log('User selects ' + playerSelection + '.');
-
-    if (playerSelection === computerSelection) {
-        return(`Tie! You both selected ${playerSelection}.`)
-    }
-    else if (playerSelection === 'rock' && computerSelection === 'scissors') {
-        ++userWins;
-        return(`You win. ${playerSelection} beats ${computerSelection}.`);
-    } else if (playerSelection === 'scissors' && computerSelection === 'paper') {
-        ++userWins;
-        return(`You win. ${playerSelection} beats ${computerSelection}.`);
-     } else if (playerSelection === 'paper' && computerSelection === 'rock') {
-         ++userWins;
-         return(`You win. ${playerSelection} beats ${computerSelection}.`);
-     } else {
-         ++compWins;
-         return(`You lose. ${computerSelection} beats ${playerSelection}.`);
-     }
-
-}
-
-function game() {
-    for (let i = 0; i < 5; i++ ) {
-        const computerSelection = computerPlay();
-        let playerSelection
-        // playRound(playerSelection, computerSelection);
-        
-        ++round;
-        
-        alert(`Round ${round}!`)
-        while (playerSelection == undefined) {
-            playerSelection = userPlay();
-        }
-
-        let results = playRound(playerSelection, computerSelection);
-
-       
-
-        // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
-        console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
-
-        if (round === 5) {
-            if (userWins > compWins) {
-                alert(`Player wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`  );
-                // resetGame();
-            } else if (compWins > userWins) {
-                alert(`Computer wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
-                // resetGame();
-            } else if (userWins === compWins) {
-                alert(`Tie game after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
-                // resetGame();
-            }
-        }
-    }
-}
-
-game();
-
-
-
-// console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection))
