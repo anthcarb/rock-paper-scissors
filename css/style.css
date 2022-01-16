@@ -33,18 +33,16 @@ button{
 .scoreboard{
     display: flex;
     justify-content: space-evenly;
+    background-color: #555555;
+    margin: 0 10vw;
 }
 
-.container{
-    display: flex;
-    justify-content: center;
-}
 .battlefield{
     height: 20vh;
     width: 80vw;
     display: flex;
     background-color: black;
-    margin: 10px;
+    margin: 0 10vw 5vh;
 }
 
 .blankimg{
