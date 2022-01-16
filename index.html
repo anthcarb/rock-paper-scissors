@@ -6,29 +6,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <script src="javascript/script.js" defer></script>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <div class="header">
-        <h1 class="title">Rock Paper Scissors Game</h1>
+        <div class="title">Rock Paper Scissors</div>
+        <div class="rules">Play against the computer<br>Select ROCK!, PAPER!, or SCISSORS!<br>First to score 5 wins!</div>
     </div>
     <div class="scoreboard">
-        <div class="userScore"></div>
+        <div class="userScore">Player</div>
         <div class="roundsLeft"></div>
-        <div class="compScore"></div>
+        <div class="compScore">Computer</div>
     </div>
-    <div class="battlefied"></div>
+    <div class="battlefield"></div>
     <div class="playerInput">
-        <div class="rockInput">
-            <img src="" alt="Rock hand outline" class="blankImg">
-            <button class="button rock"></button>
+        <div class="rock input">
+            <img src="img/rock-outline.svg" alt="Rock hand outline" class="blankImg">
+            <button class="button rock">ROCK!</button>
         </div>
-        <div class="paperInput">
-            <img src="" alt="Paper hand outline" class="blankImg">
-            <button class="button paper"></button>
+        <div class="paper input">
+            <img src="img/paper-outline.svg" alt="Paper hand outline" class="blankImg">
+            <button class="button paper">PAPER!</button>
         </div>
-        <div class="scissorsInput">
-            <img src="" alt="Scissors hand outline" class="blankImg">
-            <button class="button scissors"></button>
+        <div class="scissors input">
+            <img src="img/scissors-outline.svg" alt="Scissors hand outline" class="blankImg">
+            <button class="button scissors">SCISSORS!</button>
         </div>
     </div>
 </body>
