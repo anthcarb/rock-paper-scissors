@@ -1,0 +1,61 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+button{
+    margin: 0 .5em;
+    padding: 0.5em 1em;
+    font-size: 75%;
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    font-weight: 1000;
+    font-size: 2em;
+}
+.rules{
+    font-style: italic;
+    font-size: 1.5em;
+    text-align: center;
+}
+.scoreboard{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.battlefield{
+    height: 20vh;
+    display: flex;
+}
+
+.blankimg{
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.playerInput{
+    display: flex;
+    justify-content: space-evenly;
+    justify-items: center;
+}
+
+.input{
+    width: 30vh;
+    height: 40vh;
+    background-color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
