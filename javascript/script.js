@@ -100,7 +100,7 @@ function game() {
     }
 }
 
-game();
+// game();
 
 
 
