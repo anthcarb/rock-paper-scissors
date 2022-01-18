@@ -15,6 +15,7 @@ button{
     font-size: 75%;
     background-color: #AAAAAA;
     border-radius: 4px;
+    font-size: 1em;
 }
 
 .header{
@@ -49,18 +50,6 @@ button{
     margin: 0 10vw 5vh;
 }
 
-.blankImg{
-    max-width: 100%;
-    max-height: 100%;
-}
-
-.outlineImg{
-    display: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 99;
-}
 
 .playerInput{
     display: flex;
@@ -75,9 +64,4 @@ button{
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-}
-
-.input:hover .blankImg{
-    background-color: #AAAAAA;
-    display: inline;
 }
