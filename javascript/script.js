@@ -1,37 +1,16 @@
-//Create constant selects with list rock, paper, scissors
-//Check to see if rounds is less than 5 or if the game is over
-//Create variable computerSelection that equals randomly chosen item from selects
-//Prompt user to choose one of rock, paper, scissors and store in usersSelect
-//Change playerSelection to lower case.
-//Check if playerSelection equals rock, paper, or scissors otherwise don't allow to continue
-//Compare playerSelection and compselect
-//Rock beats scissors, scissors beat paper, paper beats rock. 
-//Ties prompt user to choose new playerSelection, and computerSelection choses new random value.
-//Declare a winner. Add 1 to the compWins or userWins depending on who wins.
-//Add 1 to the total round tally.
-//Repeat until 5 rounds have been played.
-
 const select = [ 'rock', 'paper', 'scissors'];
 let round = 0;
 let userWins = 0;
 let compWins = 0;
 
-
-
-
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
 }
-// Randomly selects rock, paper, scissors for computerPlay
+// Randomly selects rock, paper, scissors for computer
 
 function userPlay(){
-    let userInput = prompt('Choose rock, paper, or scissors!', 'rock, paper, scissors').toLowerCase();
-    if (select.includes(userInput)) {
-        return userInput;
-    } else {
-        alert('Please select rock, paper, or scissors!');
-        // userPlay();
-    }
+    const userInput = document.querySelector('button');
+    userInput.addEventListener('click', () => console.log('hi'))
 }
 //Asks user input for rock, paper, or scissors.
 
@@ -60,6 +39,12 @@ function playRound(playerSelection, computerSelection){
 }
 //rock paper scissor logic. checks tie, before checking user win conditions, if user doesn't win, then computer wins.
 
+function displayScore() {
+    const scoreText = `${userWins} - ${compWins}`;
+    const score = document.querySelector('.score')
+    score.textContent = scoreText
+}
+displayScore();
 function game() {
     for (let i = 0; i < 5; i++ ) {
         //loop for 5 rounds.
