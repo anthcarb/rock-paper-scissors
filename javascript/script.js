@@ -1,5 +1,4 @@
 const select = [ 'rock', 'paper', 'scissors'];
-let round = 0;
 let userWins = 0;
 let compWins = 0;
 
@@ -12,16 +11,13 @@ function userPlay(){
     // const userInput = document.querySelector('button');
     // userInput.addEventListener('click', () => console.log('hi'))
     let playerSelection = 'rock'
+    return playerSelection;
 }
 //Asks user input for rock, paper, or scissors.
 
 function playRound(playerSelection, computerSelection){
-
-    console.log('Computer selects ' + computerSelection + '.');
-    console.log('Player selects ' + playerSelection + '.');
-
     if (playerSelection === computerSelection) {
-        return(`Tie! You both selected ${playerSelection}.`)
+        return(`Tie! You both selected ${playerSelection}.`);
     }
     else if (playerSelection === 'rock' && computerSelection === 'scissors') {
         ++userWins;
@@ -40,65 +36,36 @@ function playRound(playerSelection, computerSelection){
 }
 //rock paper scissor logic. checks tie, before checking user win conditions, if user doesn't win, then computer wins.
 
-function displayScore() {
+function displayScore(userWins, compWins) {
     const scoreText = `${userWins} - ${compWins}`;
-    const score = document.querySelector('.score')
-    score.textContent = scoreText
+    const score = document.querySelector('.score');
+    score.textContent = scoreText;
 }
 
-function displayResults() {
+function displayResults(results) {
     const resultsText = results;
-    const battlefieldText = document.querySelector('.battlefield')
+    const battlefieldText = document.querySelector('.battlefield');
     battlefieldText.textContent = resultsText;
 }
 
 function game() {
-    while(userWins < 5 || compWins < 5) {
-        displayScore();
-
-    }
-    for (let i = 0; i < 5; i++ ) {
-        //loop for 5 rounds.
-
+    while(userWins < 5 && compWins < 5) {
         const computerSelection = computerPlay();
-        let playerSelection
-        // playRound(playerSelection, computerSelection);
-        
-        ++round;
-
-        alert(`Round ${round}!`)
-        //Tells what round is about to be played
-
-        while (playerSelection == undefined) {
-            playerSelection = userPlay();
-        }
-        //checks if player selection had a valid rock, paper, scissors, prompt, otherwise asks for user input until a valid choice.
-
-        let results = playRound(playerSelection, computerSelection);
-        displayResults();
-        //playround returns the results of the game. who won and who beat who.
-       
-
-
-        // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
-        console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
-
-        if (round === 5) {
-            if (userWins > compWins) {
-                alert(`Player wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`  );
-                // resetGame();
-            } else if (compWins > userWins) {
-                alert(`Computer wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
-                // resetGame();
-            } else if (userWins === compWins) {
-                alert(`Tie game after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
-                // resetGame();
-            }
-        }
+        const playerSelection = userPlay();
+        const results = playRound(playerSelection, computerSelection);
+        displayScore(userWins, compWins);
+        displayResults(results);
     }
+    if (userWins > compWins) {
+        results = `Player wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}` ;
+        displayResults(results);
+    } else {
+        results = (`Computer wins after 5 rounds! Final score is Player: ${userWins} - Computer: ${compWins}`);
+        displayResults(results);
+        }
 }
 
-// game();
+game();
 
 
 
