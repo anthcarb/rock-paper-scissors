@@ -9,8 +9,9 @@ function computerPlay(){
 // Randomly selects rock, paper, scissors for computer
 
 function userPlay(){
-    const userInput = document.querySelector('button');
-    userInput.addEventListener('click', () => console.log('hi'))
+    // const userInput = document.querySelector('button');
+    // userInput.addEventListener('click', () => console.log('hi'))
+    let playerSelection = 'rock'
 }
 //Asks user input for rock, paper, or scissors.
 
@@ -44,8 +45,18 @@ function displayScore() {
     const score = document.querySelector('.score')
     score.textContent = scoreText
 }
-displayScore();
+
+function displayResults() {
+    const resultsText = results;
+    const battlefieldText = document.querySelector('.battlefield')
+    battlefieldText.textContent = resultsText;
+}
+
 function game() {
+    while(userWins < 5 || compWins < 5) {
+        displayScore();
+
+    }
     for (let i = 0; i < 5; i++ ) {
         //loop for 5 rounds.
 
@@ -64,8 +75,10 @@ function game() {
         //checks if player selection had a valid rock, paper, scissors, prompt, otherwise asks for user input until a valid choice.
 
         let results = playRound(playerSelection, computerSelection);
+        displayResults();
         //playround returns the results of the game. who won and who beat who.
        
+
 
         // console.log(`Round ${round}. ` + playRound(playerSelection, computerSelection));
         console.log(`Round ${round}. ${results} Score is Player: ${userWins} - Computer: ${compWins}`);
