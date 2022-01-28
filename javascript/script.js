@@ -1,7 +1,8 @@
 const select = [ 'rock', 'paper', 'scissors'];
 let userWins = 0;
 let compWins = 0;
-
+let playerInput = document.querySelectorAll('.inputButton')
+let resetInput = document.querySelector('.resetButton')
 
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
@@ -13,14 +14,25 @@ function buttonPlay(input) {
     input.addEventListener('click', (e) => {
         let playerSelection = e.target.id;
         const computerSelection = computerPlay();
-        const results = playRound(playerSelection, computerSelection);        
+        let results = playRound(playerSelection, computerSelection);        
         displayScore(userWins, compWins);
         displayResults(results);
+        if( userWins === 5) {
+            results = `Player wins best out of 5! Final score is Player: ${userWins} - Computer: ${compWins}` ;
+            displayResults(results);
+            playerInput.forEach((button) => button.setAttribute("disabled", 1));
+            reset();
+        } else if( compWins === 5) {
+            results = (`Computer wins best out of 5! Final score is Player: ${userWins} - Computer: ${compWins}`);
+            displayResults(results);
+            playerInput.forEach((button) => button.setAttribute("disabled", 1));
+            reset();
+        }
     })
 }
 
 function userPlay() {
-    let inputs = document.querySelectorAll('button');
+    let inputs = document.querySelectorAll('.inputButton');
     inputs.forEach((input) => buttonPlay(input));
 }
 
@@ -59,30 +71,20 @@ function displayResults(results) {
 
 function game() {
     userPlay();
-    while(userWins < 5 && compWins < 5) {
-        return
-    }
-    if (userWins > compWins) {
-        results = `Player wins best out of 5! Final score is Player: ${userWins} - Computer: ${compWins}` ;
-        displayResults(results);
-        reset();
-    } else {
-        results = (`Computer wins best out of 5! Final score is Player: ${userWins} - Computer: ${compWins}`);
-        displayResults(results);
-        reset();
-        }
 }
 
 function reset() {
-    let inputs = document.querySelectorAll('button')
-    const reset = inputs.forEach( (input) =>
-    input.addEventListener('click', () =>{
-        results = '';
+
+    resetInput.addEventListener('click', () => {
+        results = ''
         userWins = 0;
         compWins = 0;
-    }))
+        displayResults(results)
+        displayScore(userWins, compWins);
+        playerInput.forEach((button) => button.removeAttribute("disabled"));
+    })
     console.log("reset performed")
-    return reset;
+    return
 }
 
 document.querySelector('.playerInput').addEventListener('click', game());
