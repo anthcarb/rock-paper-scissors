@@ -1,8 +1,8 @@
 const select = [ 'rock', 'paper', 'scissors'];
 let userWins = 0;
 let compWins = 0;
-let playerInput = document.querySelectorAll('.inputButton')
-let resetInput = document.querySelector('.resetButton')
+let playerInput = document.querySelectorAll('.inputButton');
+let resetInput = document.querySelector('.resetButton');
 
 function computerPlay(){
     return select[Math.floor(Math.random() * select.length)];
@@ -76,14 +76,14 @@ function game() {
 function reset() {
 
     resetInput.addEventListener('click', () => {
-        results = ''
+        results = '';
         userWins = 0;
         compWins = 0;
         displayResults(results)
         displayScore(userWins, compWins);
         playerInput.forEach((button) => button.removeAttribute("disabled"));
     })
-    console.log("reset performed")
+    console.log("reset performed");
     return
 }
 
